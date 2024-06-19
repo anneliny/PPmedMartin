@@ -1,4 +1,4 @@
-﻿
+
 namespace PPmedMartin
 {
     internal class Stores
@@ -7,13 +7,16 @@ namespace PPmedMartin
         public string Speciality { get; private set; }
         public int PriceRange { get; private set; }
 
-        public List<Stores> StoresInCenter {  get; private set; }
+        public static int storeCount = 0;
+
+        public List<Stores> StoresInCenter { get; private set; }
 
         public Stores(string name, string speciality, int priceRange)
         {
             Name = name;
             Speciality = speciality;
             PriceRange = priceRange;
+            storeCount++;
         }
         public Stores()
         {
@@ -27,7 +30,45 @@ namespace PPmedMartin
                 new Stores("Bolia", "Interiør", 3),
 
             };
+
+            Main();
+
+            Console.WriteLine(Stores.storeCount);
+
         }
+
+        public void Main()
+        {
+            while (true)
+            {
+                Console.WriteLine("Nå skal det shoppes! Hva vil du gjøre?");
+                Console.WriteLine("1. Legg til butikk"); //Velge å sortere etter pris
+                Console.WriteLine("2. Se butikkene");
+                Console.WriteLine("3. Tell butikkene");
+                Console.WriteLine("4. Avslutt");
+                var input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "1":
+                        //var addStores = new Stores();
+                        AddStore();
+                        //addStores.ShowStores1();
+                        break;
+                    case "2":
+                        //var store = new Stores();
+                        ShowStores();
+                        break;
+                    case "3":
+                        Console.WriteLine(Stores.storeCount);
+                        break;
+                    default:
+                        System.Environment.Exit(0);
+                        break;
+                }
+            }
+        }
+
 
         public void ShowStores()
         {
@@ -35,8 +76,7 @@ namespace PPmedMartin
             {
                 Console.WriteLine($"Navn: {shops.Name}");
                 Console.WriteLine($"Spesialitet: {shops.Speciality}");
-                Console.WriteLine($"Prisnivå: {shops.PriceRange}");
-                Console.WriteLine();
+                Console.WriteLine($"Prisnivå: {shops.PriceRange} \n");
             }
         }
 
@@ -51,9 +91,23 @@ namespace PPmedMartin
             var inputSpeciality = Console.ReadLine();
 
             Console.Write("Skriv prisnivå: ");
-            var inputPriceRange = Console.ReadLine();
+            var inputPriceRange = Convert.ToInt32(Console.ReadLine());
 
+            Stores store1 = new Stores(inputName, inputSpeciality, inputPriceRange);
+
+            StoresInCenter.Add(store1);
 
         }
+
+
+        /*public void ShowStores1()
+        {
+            foreach (Stores shops in StoresInCenter)
+            {
+                Console.WriteLine($"Navn: {shops.Name}");
+                Console.WriteLine($"Spesialitet: {shops.Speciality}");
+                Console.WriteLine($"Prisnivå: {shops.PriceRange} \n");
+            }
+        }*/
     }
 }
