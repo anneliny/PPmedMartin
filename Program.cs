@@ -12,4 +12,4 @@
 
 using PPmedMartin;
 
-new ShoppingCenter();
+new Stores();
