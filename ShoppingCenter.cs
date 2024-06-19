@@ -1,4 +1,7 @@
-﻿
+/*﻿
+
+DONT LOOK THIS IS UGLY DUCKLING
+
 namespace PPmedMartin
 {
     internal class ShoppingCenter
@@ -38,3 +41,8 @@ namespace PPmedMartin
         }
     }
 }
+*/
+
+
+
+
